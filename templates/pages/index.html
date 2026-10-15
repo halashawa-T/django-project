@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Personal Information</title>
+</head>
+<body>
+
+    <h1>My Personal Information</h1>
+
+    <hr>
+
+    <p><b>Full Name:</b> {{ name |capfirst |add:" shawa" }}</p>
+    <p><b>Student ID:</b> {{ID|stringformat:"s"}}</p>
+    <p><b>Address:</b> {{address |upper}}</p>
+    <p><b>Department:</b> Web Development</p>
+     <p><b>Email:</b> {{email |default:"halashawa127@gmail.com"}}</p>
+
+</body>
+</html>
