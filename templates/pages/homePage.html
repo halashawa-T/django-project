@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Directory</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b53;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .card h2 {
+            text-align: center;
+            color: #243b53;
+        }
+
+        .card p {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            overflow-wrap: anywhere;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #486581;
+        }
+
+        .empty {
+            text-align: center;
+            grid-column: 1 / -1;
+            color: #627d98;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>People Directory</h1>
+
+    <div class="container">
+        {% for person in por %}
+            <div class="card">
+
+                {% if person.photo %}
+                    <img src="{{ person.photo.url }}" alt="{{ person.name }}">
+                {% endif %}
+
+                <h2>{{ person.name }}</h2>
+
+                <p><span class="label">University ID:</span> {{ person.uni_id }}</p>
+                <p><span class="label">Age:</span> {{ person.age }}</p>
+                <p><span class="label">Date of Birth:</span> {{ person.dob }}</p>
+                <p><span class="label">Address:</span> {{ person.address|default:"Not provided" }}</p>
+                <p><span class="label">Salary:</span> {{ person.salary }}</p>
+
+            </div>
+        {% empty %}
+            <p class="empty">No people have been added yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
